@@ -1,23 +1,25 @@
 # Wallbox.com API
-How to interact with the API in Javascript?
+How to interact with the API?
 
 In this document, i will give you a short overview, how to proceed.
 
 ## Basic informations
 ```
-    let password = 'YourPassword';
-    let email = 'you@email.com';
-    let charger_id = 'idOfTheCharger';
-    let wallbox_token = '';
-    let conn_timeout = 3000;
-    
-    const BASEURL = 'https://api.wall-box.com/';
-    const URL_AUTHENTICATION = 'auth/token/user';
-    const URL_CHARGER = 'v2/charger/';
-    const URL_CHARGER_CONTROL = 'v3/chargers/';
-    const URL_CHARGER_ACTION = '/remote-action';
-    const URL_STATUS = 'chargers/status/';
+/* Basic Variables used */
+let password = 'YourPassword';
+let email = 'you@email.com';
+let charger_id = 'idOfTheCharger';
+let wallbox_token = '';
+let conn_timeout = 3000;
+
+const BASEURL = 'https://api.wall-box.com/';
+const URL_AUTHENTICATION = 'auth/token/user';
+const URL_CHARGER = 'v2/charger/';
+const URL_CHARGER_CONTROL = 'v3/chargers/';
+const URL_CHARGER_ACTION = '/remote-action';
+const URL_STATUS = 'chargers/status/';
 ```
+
 ## Token
 For every request to the Wallbox.com API you need a request token. With this token, you can control the Wallbox or request data from it.
 ```
@@ -145,5 +147,134 @@ const options = {
     }
 }
 ```
-You will receive a json, with extended and more informations, which is around 200 lines long. The most intersting JSON property here would be ``charging_power``.
+You will receive a json, with extended and more informations, which is around 200 lines long. The most interesting JSON property here would be ``charging_power``.
 
+```
+{
+    "user_id": 286113,
+    "user_name": "Stephan",
+    "car_id": 1,
+    "car_plate": "",
+    "depot_price": 0.2,
+    "last_sync": "2023-08-18 06:50:26",
+    "power_sharing_status": 0,
+    "mid_status": 1,
+    "status_id": 210,
+    "name": "PulsarPlus SN 9988552",
+    "charging_power": 0,
+    "max_available_power": 32,
+    "depot_name": "Kreyenborg.koeln",
+    "charging_speed": 0,
+    "added_range": 4,
+    "added_energy": 0.546,
+    "added_green_energy": 0,
+    "added_discharged_energy": 0,
+    "added_grid_energy": 0,
+    "charging_time": 585,
+    "finished": true,
+    "cost": 0,
+    "current_mode": 3,
+    "preventive_discharge": false,
+    "state_of_charge": null,
+    "ocpp_status": 4,
+    "config_data": {
+        "charger_id": 9988552,
+        "uid": "xys",
+        "serial_number": "9988552",
+        "name": "PulsarPlus SN 9988552",
+        "locked": 1,
+        "auto_lock": 1,
+        "auto_lock_time": 300,
+        "multiuser": 0,
+        "max_charging_current": 32,
+        "language": "EN",
+        "icp_max_current": 0,
+        "grid_type": 1,
+        "energy_price": 0.24,
+        "energyCost": {
+            "value": 0.24,
+            "inheritedGroupId": null
+        },
+        "unlock_user_id": 286113,
+        "power_sharing_config": 256,
+        "purchased_power": 0,
+        "show_name": 1,
+        "show_lastname": 1,
+        "show_email": 1,
+        "show_profile": 1,
+        "show_default_user": 1,
+        "gesture_status": 7,
+        "home_sharing": 0,
+        "dca_status": 0,
+        "connection_type": 1,
+        "max_available_current": 32,
+        "live_refresh_time": 30,
+        "update_refresh_time": 300,
+        "owner_id": 286113,
+        "remote_action": 0,
+        "rfid_type": null,
+        "charger_has_image": 0,
+        "sha256_charger_image": null,
+        "plan": {
+            "plan_name": "Business",
+            "features": [
+                "DEFAULT_FEATURE",
+                "POWER_BOOST",
+                "MOBILE_CONNECTIVITY",
+                "CHARGER_SUBGROUPS",
+                "USER_SUBGROUPS",
+                "DYNAMIC_POWER_SHARING",
+                "PAYMENTS",
+                "SET_UP_INCLUDED",
+                "BULK_ACTIONS",
+                "AUTOMATIC_REPORTING",
+                "BILLING",
+                "STATISTICS"
+            ]
+        },
+        "sync_timestamp": 1692301922,
+        "currency": {
+            "id": 1,
+            "name": "Euro Member Countries",
+            "symbol": "€",
+            "code": "EUR"
+        },
+        "charger_load_type": "Private",
+        "contract_charging_available": false,
+        "country": {
+            "id": 4,
+            "code": "DEU",
+            "iso2": "DE",
+            "name": "ALEMANIA",
+            "phone_code": "49"
+        },
+        "state": null,
+        "timezone": "Europe/Berlin",
+        "part_number": "PLP1-M-2-4-9-002-F",
+        "software": {
+            "updateAvailable": false,
+            "currentVersion": "5.17.59",
+            "latestVersion": "5.17.59",
+            "fileName": "plp1_5.17.59.tar"
+        },
+        "available": 1,
+        "operation_mode": "ocpp",
+        "ocpp_ready": "ocpp_1.6j",
+        "tariffs": [],
+        "mid_enabled": 0,
+        "mid_margin": 1,
+        "mid_margin_unit": 1,
+        "mid_serial_number": "",
+        "mid_status": 1,
+        "session_segment_length": 0,
+        "group_id": 289814,
+        "user_socket_locking": 0,
+        "sim_iccid": null,
+        "ecosmart": {
+            "enabled": false,
+            "mode": 0,
+            "percentage": 100
+        }
+    }
+}
+```
