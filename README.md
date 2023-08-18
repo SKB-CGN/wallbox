@@ -59,16 +59,16 @@ const options = {
 ### Variables for key and value
 | Key  | Value | Explanation |
 | ------------- | ------------- | ------------- |
-| locked  | 0/1  | Unlock/Lock the Wallbox
-| maxChargingCurrent  | Values between 6 and 32  | Set the current charge speed
-| action | 1 | Resume - Mode
-| action | 2 | Pause - Mode
-| action | 3 | Reboot the Wallbox
-| action | 4 | Factory - Rest the Wallbox. ! Be careful !
-| action | 5 | Install Software Update if available
+| `locked`  | `0 or 1`  | Unlock/Lock the Wallbox
+| `maxChargingCurrent`  | `6 to 32`  | Set the current charge speed
+| `action` | `1` | Resume - Mode
+| `action` | `2` | Pause - Mode
+| `action` | `3` | Reboot the Wallbox
+| `action` | `4` | Factory - Rest the Wallbox. ! Be careful !
+| `action` | `5` | Install Software Update if available
 
-## Receive Data of the Wallbox
-There are 2 information adresses, whcih provide informations. One is "basic" information about the Wallbox itself and some diagnosis. The other one - i call it "extended" delivers informations about about charging and past sessions.
+## Receive Data from the Wallbox - API
+There are 2 information adresses, which provide informations. One is "basic" information about the Wallbox itself and some diagnosis. The other one - i call it "extended", delivers informations about about charging and past sessions.
 
 ### Basic information
 ```
