@@ -7,7 +7,7 @@ In this document, i will give you a short overview, how to proceed.
 This procedure only works, if you have registered an account at wallbox.com with *your own* email address. Google SSO (Single-Sign-on) will not work!
 
 ## Basic informations
-```
+```javascript
 /* Basic Variables used */
 let password = 'YourPassword';
 let email = 'you@email.com';
@@ -25,7 +25,7 @@ const URL_STATUS = 'chargers/status/';
 
 ## Token
 For every request to the Wallbox.com API you need a request token. With this token, you can control the Wallbox or request data from it.
-```
+```javascript
 /* Send a POST request to the API */
 const options = {
     url: BASEURL + URL_AUTHENTICATION,
@@ -44,7 +44,7 @@ The token will be returned in ``jwt `` Block of the return from the server. Crea
 With the new received token, which is valid for around 60 seconds, you can now control the Wallbox.
 
 ## Control the Wallbox
-```
+```javascript
 /* Send a PUT request to the API */
 const options = {
     url: BASEURL + URL_CHARGER + charger_id,
@@ -76,7 +76,7 @@ const options = {
 There are 2 information adresses, which provide informations. One is "basic" information about the Wallbox itself and some diagnosis. The other one - i call it "extended", delivers informations about about charging and past sessions.
 
 ### Basic information
-```
+```javascript
 /* Send a PUT request to the API */
 const options = {
     url: BASEURL + URL_CHARGER + charger_id,
@@ -92,7 +92,7 @@ const options = {
 
 You will receive a json, with basic informations and the current state of the Wallbox inside ``status``.
 
-```
+```json
 {
     "data": {
         "chargerData": {
@@ -137,7 +137,7 @@ You will receive a json, with basic informations and the current state of the Wa
 ```
 
 ### Extended Information
-```
+```javascript
 /* Send a GET request to the API */
 const options = {
     url: BASEURL + URL_STATUS + charger_id,
@@ -152,7 +152,7 @@ const options = {
 ```
 You will receive a json, with extended and more informations, which is around 200 lines long. The most interesting JSON property here would be ``charging_power`` and ``status_id`` - explained below.
 
-```
+```json
 {
     "user_id": 286113,
     "user_name": "Stephan",
