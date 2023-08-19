@@ -3,6 +3,9 @@ How to interact with the API?
 
 In this document, i will give you a short overview, how to proceed.
 
+**Please note:**  
+This procedure only works, if you have registered an account at wallbox.com with *your own* email address. Google SSO (Single-Sign-on) will not work!
+
 ## Basic informations
 ```
 /* Basic Variables used */
@@ -87,7 +90,7 @@ const options = {
 }
 ```
 
-You will receive a json, with basic informations.
+You will receive a json, with basic informations and the current state of the Wallbox inside ``status``.
 
 ```
 {
@@ -147,7 +150,7 @@ const options = {
     }
 }
 ```
-You will receive a json, with extended and more informations, which is around 200 lines long. The most interesting JSON property here would be ``charging_power``.
+You will receive a json, with extended and more informations, which is around 200 lines long. The most interesting JSON property here would be ``charging_power`` and ``status_id`` - explained below.
 
 ```
 {
@@ -278,3 +281,34 @@ You will receive a json, with extended and more informations, which is around 20
     }
 }
 ```
+### Status Informations inside both JSON properties `status`
+| Status Code  | Explanation |
+| ------------- | ------------- |
+0| Disconnected|
+|14| Error|
+|15| Error|
+|161| Ready|
+|162| Ready|
+|163| Disconnected|
+|164| Waiting|
+|165| Locked|
+|166| Updating|
+|177| Scheduled|
+|178| Paused|
+|179| Scheduled|
+|180| Waiting for car demand|
+|181| Waiting for car demand|
+|182| Paused|
+|183| Waiting in queue by Power Sharing|
+|184| Waiting in queue by Power Sharing|
+|185| Waiting in queue by Power Boost|
+|186| Waiting in queue by Power Boost|
+|187| Waiting MID failed|
+|188| Waiting MID safety margin exceeded|
+|189| Waiting in queue by Eco-Smart|
+|193| Charging|
+|194| Charging|
+|195| Charging|
+|196| Discharging|
+|209| Locked|
+|210| Locked - Car connected
