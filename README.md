@@ -71,7 +71,7 @@ const options = {
 | `action` | `3` | Reboot the Wallbox
 | `action` | `4` | Factory - Rest the Wallbox. ! Be careful !
 | `action` | `5` | Install Software Update if available
-| `action` | `9` | After a manual stop : resume schedule and ecosmart mode
+| `action` | `9` | After a manual stop: resume schedule and ecosmart mode
 
 ## Receive Data from the Wallbox - API
 There are 2 information adresses, which provide informations. One is "basic" information about the Wallbox itself and some diagnosis. The other one - i call it "extended", delivers informations about about charging and past sessions.
