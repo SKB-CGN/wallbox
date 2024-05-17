@@ -120,6 +120,7 @@ const options = {
     })
 }
 ```
+| Key | Explanation |
 |  ------------- | ------------- |
 | "enabled" | 0 or 1 (enable or disable eco smart)
 | "mode" | 0 is Eco Mode, 1 is Full Green 
