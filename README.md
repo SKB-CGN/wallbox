@@ -111,12 +111,14 @@ const options = {
         'Content-Type': 'application/json;charset=utf-8',
     },
     data: JSON.stringify({
-         "attributes": {
-                "percentage": 100,
-                "enabled": 0,
-                 "mode": 0
-        },
-        "type": "eco_smart"
+        "data" : {
+             "attributes": {
+                    "percentage": 100,
+                    "enabled": 0,
+                     "mode": 0
+            },
+            "type": "eco_smart"
+        }
     })
 }
 ```
