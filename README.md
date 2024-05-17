@@ -58,7 +58,7 @@ const options = {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json;charset=utf-8',
     },
-    body: JSON.stringify({
+    data: JSON.stringify({
         [key]: value
     })
 }
@@ -110,11 +110,12 @@ const options = {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json;charset=utf-8',
     },
-    body: JSON.stringify({
+    data: JSON.stringify({
          "attributes": {
                 "percentage": 100,
                 "enabled": 0,
-                 "mode": 0        },
+                 "mode": 0
+        },
         "type": "eco_smart"
     })
 }
