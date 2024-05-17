@@ -19,8 +19,11 @@ const BASEURL = 'https://api.wall-box.com/';
 const URL_AUTHENTICATION = 'auth/token/user';
 const URL_CHARGER = 'v2/charger/';
 const URL_CHARGER_CONTROL = 'v3/chargers/';
+const URL_CHARGER_MODES = 'v4/chargers/';
 const URL_CHARGER_ACTION = '/remote-action';
 const URL_STATUS = 'chargers/status/';
+const URL_REMOTE_ACTION = '/remote-action/';
+const URL_ECO_SMART = '/eco-smart/';
 ```
 
 ## Token
@@ -66,12 +69,59 @@ const options = {
 | ------------- | ------------- | ------------- |
 | `locked`  | `0 or 1`  | Unlock/Lock the Wallbox
 | `maxChargingCurrent`  | `6 to 32`  | Set the current charge speed
-| `action` | `1` | Resume - Mode
-| `action` | `2` | Pause - Mode
-| `action` | `3` | Reboot the Wallbox
-| `action` | `4` | Factory - Rest the Wallbox. ! Be careful !
-| `action` | `5` | Install Software Update if available
-| `action` | `9` | After a manual stop: resume schedule and ecosmart mode
+
+
+```javascript
+/* Send a POST request to the API */
+const options = {
+    url: BASEURL + URL_CHARGER_CONTROL + charger_id + URL_REMOTE_ACTION,
+    timeout: conn_timeout,
+    method: 'POST',
+    headers: {
+        'Authorization': 'Bearer ' + wallbox_token,
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({
+        'action': value
+    })
+}
+```
+### Variables for action value
+| Value | Explanation |
+|  ------------- | ------------- |
+|  `1` | Resume - Mode
+|  `2` | Pause - Mode
+|  `3` | Reboot the Wallbox
+|  `4` | Factory - Rest the Wallbox. ! Be careful !
+|  `5` | Install Software Update if available
+|  `9` | After a manual stop: resume schedule and ecosmart mode
+
+
+## Control Wallbox Modes
+```javascript
+/* Send a PUT request to the API */
+const options = {
+    url: BASEURL + URL_CHARGER_MODES + charger_id + URL_ECO_SMART,
+    timeout: conn_timeout,
+    method: 'PUT',
+    headers: {
+        'Authorization': 'Bearer ' + wallbox_token,
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({
+         "attributes": {
+                "percentage": 100,
+                "enabled": 0,
+                 "mode": 0        },
+        "type": "eco_smart"
+    })
+}
+```
+
+"enabled:: 0 or 1 (enable or disable eco smart)
+"mode": 0 is Eco Mode, 1 is Full Green 
 
 ## Receive Data from the Wallbox - API
 There are 2 information adresses, which provide informations. One is "basic" information about the Wallbox itself and some diagnosis. The other one - i call it "extended", delivers informations about about charging and past sessions.
