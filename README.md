@@ -84,7 +84,8 @@ const options = {
         'Content-Type': 'application/json;charset=utf-8',
     },
     data: JSON.stringify({
-        [key 1]: value
+        [key_1]: value,
+        [key_2]: value
     })
 }
 ```
