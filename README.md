@@ -22,6 +22,7 @@ const URL_CHARGER_CONTROL = 'v3/chargers/';
 const URL_CHARGER_MODES = 'v4/chargers/';
 const URL_CHARGER_ACTION = '/remote-action';
 const URL_STATUS = 'chargers/status/';
+const URL_CONFIG = 'chargers/config/';
 const URL_REMOTE_ACTION = '/remote-action/';
 const URL_ECO_SMART = '/eco-smart/';
 ```
@@ -70,6 +71,30 @@ const options = {
 | `locked`  | `0 or 1`  | Unlock/Lock the Wallbox
 | `maxChargingCurrent`  | `6 to 32`  | Set the current charge speed
 
+Alternative with configs:
+```javascript
+/* Send a POST request to the API */
+const options = {
+    url: BASEURL + URL_CONFIG + charger_id,
+    timeout: conn_timeout,
+    method: 'POST',
+    headers: {
+        'Authorization': 'Bearer ' + wallbox_token,
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json;charset=utf-8',
+    },
+    data: JSON.stringify({
+        [key 1]: value
+    })
+}
+```
+
+### Variables for key and value
+| Key 1 | Value | Explanation | Key 2 | Value | Explanation |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| `energy_price`  | float number  | price per kWh | `currency_id` | idx 1 to n | Optional the currency index, 1 for euro
+| `max_charging_current`  | `6 to 32`  | Set the current charge speed | NO KEY2 | | |
+| `home_sharing` | `0 or 1` | disable or enable power boost | `icp_max_current` | `1 to 64 or -1 to -64` | set the max power per phase use positive if `home_sharing` is 1 , negative if 0
 
 ```javascript
 /* Send a POST request to the API */
