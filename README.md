@@ -120,9 +120,9 @@ const options = {
     })
 }
 ```
-
-"enabled:: 0 or 1 (enable or disable eco smart)
-"mode": 0 is Eco Mode, 1 is Full Green 
+|  ------------- | ------------- |
+| "enabled" | 0 or 1 (enable or disable eco smart)
+| "mode" | 0 is Eco Mode, 1 is Full Green 
 
 ## Receive Data from the Wallbox - API
 There are 2 information adresses, which provide informations. One is "basic" information about the Wallbox itself and some diagnosis. The other one - i call it "extended", delivers informations about about charging and past sessions.
