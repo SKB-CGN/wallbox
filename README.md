@@ -371,7 +371,7 @@ You will receive a json, with extended and more informations, which is around 20
 |161| Ready|
 |162| Ready|
 |163| Disconnected|
-|164| Waiting|
+|164| Waiting - Remove plug|
 |165| Locked|
 |166| Updating|
 |177| Scheduled|
